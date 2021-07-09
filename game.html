@@ -1,0 +1,152 @@
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+<style>
+body {
+  background-color: lightgrey;
+}
+#canvas {
+  background-color: white;
+}
+#palette {
+  background-color: white;
+}
+#zipper {
+  background-color: white;
+}
+#position.container {
+  display: inline-block;
+  float:left;
+}
+#box {
+  float:left;
+  border-style: inset;
+  padding:10px;
+  margin:10px;
+  background-color: grey;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width:22px;
+}
+#container {
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  display:inline-block;
+}
+</style>
+<script src="./canvas.js">
+</script>
+</head>
+
+<h1>11x11.xzy</h1>
+<div id="box">
+  <div id="box">
+    <h2>CONTROLS</h2>
+    <h2> wasd - move cursor</h2>
+    <h2> e - rotate focus</h2>
+    <h2> q - toggle movement mode</h2>
+    <h2> p - paste </h2>
+    <h2> o - copy </h2>
+    <h2> r - recursive insert</h2>
+  </div>
+  
+  <div id="box">
+    <h1>render</h1>
+    <span>
+    <div id="container">
+      <canvas id="meta2render"> </canvas>
+    </div>
+    </span>
+  </div>
+  <div id="box">
+
+  <div id="box"> 
+       <div id="box">    </div>
+       <h1>Medium</h1>
+
+    <div id="box">
+      <div>
+        <div id="position.container">
+          <h1>
+            <span id="rec"> - </span>
+            <span> | </span>
+      
+            <span id="canvas.position.canvas"> canvas: (0,0)  </span>
+            <span> | </span>
+      
+            <span id="canvas.position.cursor"> cursor: (0,0) *</span>
+            <span> | </span>
+            <span id="canvas.renderTime"> renderTime = 0 </span>
+          </h1>
+          <h1 id ="canvasTextRow2"> </h1>
+        </div>
+      </div>
+      <div id="canvas.border" style="display:inline-block;border-style:solid;">
+        <canvas id="canvas"> </canvas>
+      </div>
+    </div>
+      <div id="box">
+        <h1>
+          <span id=""> zipper : </span>
+          <span id="zipperTextRow">  </span>
+        </h1>
+        <div id="zipper.border" style="display:inline-block;border-style:solid;background-color:white;">
+          <canvas id="zipperPalette" > </canvas>
+        </div>
+        <h3> this is the view up from here | (r) to recursively insert into canvas</h3>
+      </div>
+  </div> 
+
+
+
+      <div id="box">
+   <div id="box">    </div>
+        <h1>
+          <span id="palette.position.canvas"> palette: (0,0) </span>
+          <span id="palette.position.cursor"> pcursor : (0) </span>
+          <span  id="palette.complexity"> complexity = 0 </span>
+          <span> | </span>
+          <span  id="palette.renderTime"> renderTime = 0 </span>
+        </h1>
+        <div id="palette.border" style="display:inline-block;border-style:solid;">
+          <canvas id="palette"> </canvas>
+        </div>
+        <h3>(o) copy from canvas | (p) paste onto canvas</h3>
+      </div>
+      <div id="box">
+   <div id="box">    </div>
+        <h1>colo(u)r picker</h1>
+        <div class="slidecontainer">
+          <div id="container">
+            <canvas id="colorPicker"> </canvas>
+          </div>
+          <h3>click to load to palette</h3>
+          <h1> R: <input type="range" min="0" max="255" value="255" class="slider" id="rSlider"> </h1>
+          <h1> G: <input type="range" min="0" max="255" value="255" class="slider" id="gSlider"> </h1>
+          <h1> B: <input type="range" min="0" max="255" value="255" class="slider" id="bSlider"> </h1>
+          <h1> A: <input type="range" min="0" max="255" value="255" class="slider" id="aSlider"> </h1>
+        </div>
+      </div>
+ 
+     <div id="box">
+       <div id="box">    </div>
+       <h1>Render Cache</h1>
+    
+       <button id="collectGarbage">Collect Garbage</button>
+       <input type="checkbox" id="autoGarbageCollect" checked>   Automatic Garbage Collection </input>
+       <div id="imgcache"> </div>
+       
+     </div>
+     
+    
+       
+
+  </div>
+ 
+  <div id="box" hidden>
+    <h1>event_log</h1>
+    <div id="event_log"> </div>
+  </div>
+</div>
