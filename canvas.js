@@ -150,6 +150,7 @@ var state = initialState;
 //main()
 window.onload = () => {
   setup(state)(() => {    
+    attachSaveToPngHandler(state);
     renderEverything(state);
     document.addEventListener("keydown", event => {
       handleKeyDown(state,event);
@@ -177,6 +178,16 @@ const meta2RenderData = (state) => {
 
 const canvasToPng = (state) => {
   return state.dom.canvas.canvas.toDataURL('image/png');
+}
+
+const attachSaveToPngHandler = (state) => {
+  button = document.getElementById("renderToImage");
+  button.onclick = () => {
+    pngtxt = canvasToPng(state);
+    img = document.createElement('img');
+    img.src = pngtxt;
+    document.body.appendChild(img);
+  }
 }
 
 const log_event = ((e) => {
